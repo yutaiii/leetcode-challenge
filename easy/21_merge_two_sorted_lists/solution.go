@@ -7,7 +7,6 @@
  */
 // hint: https://leetcode.com/problems/merge-two-sorted-lists/discuss/167437/go-solution
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
-	// 空
 	var newList = &ListNode{}
 	// 空　参照渡し
 	var out = newList
@@ -18,17 +17,11 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 			l1 = l1.Next
 			// newListをl1にする
 			newList = newList.Next
-			fmt.Println("=========if==========")
-			fmt.Printf("newList %+v \n", newList)
-			fmt.Printf("out.Next %+v \n", out.Next)
 		} else {
 			newList.Next = l2
 			// l2を1つ進める
 			l2 = l2.Next
 			newList = newList.Next
-			fmt.Println("=========else==========")
-			fmt.Printf("newList %+v \n", newList)
-			fmt.Printf("out.Next %+v \n", out.Next)
 		}
 	}
 
