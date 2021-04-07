@@ -1,28 +1,34 @@
-// index周りで動いていない
+// indexをメモしてあとでそれを取り除く方法
 func removeElement(nums []int, val int) int {
-	numsCopy := nums
-	//minusIte := 0
+	minusIndex := 0
+	removeIndex := []int{}
 
-	for i, v := range numsCopy {
+	// 取り除くものをremoveIndexに追加
+	for i, v := range nums {
 		if v == val {
-			// nums = remove(nums, i + minusIte)
-			nums = remove(nums, i)
-			//minusIte--
+			removeIndex = append(removeIndex, i)
+		}
+	}
+
+	// 配列から取り除く
+	for i, _ := range nums {
+		for _, v2 := range removeIndex {
+			if i == v2 {
+				// 要素を取り除くとindexの値が変わるので、その分indexをマイナスする
+				nums = remove(nums, i+minusIndex)
+				minusIndex--
+			}
 		}
 	}
 	return len(nums)
 }
 
 func remove(nums []int, i int) []int {
+	// 取り除く要素が配列の最後の場合
 	if len(nums) < i {
 		return nums[:i-1]
 	} else {
+		// それ以外
 		return append(nums[:i], nums[i+1:]...)
 	}
 }
-
-// func remove(nums []int, i int) []int {
-//     return append(nums[:i], nums[i+1:]...)
-// }
-
-// indexをメモしてあとでそれを取り除く方法
